@@ -10,9 +10,15 @@ export default class Navigation extends Module {
     this._createRouter = SwitchRouter;
   }
 
-  generateApp({ main, route, config = {} }) {
-    const router = this._createRouter(route);
-    const navigator = this._createNavigator(main, router, config);
-    return this._createApp(navigator);
+  createApp(...args) {
+    return this._createApp(...args);
+  }
+
+  createNavigator(...args) {
+    return this._createNavigator(...args);
+  }
+
+  createRouter(...args) {
+    return this._createRouter(...args);
   }
 }

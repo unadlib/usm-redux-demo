@@ -7,6 +7,9 @@ import Portal from './modules/Portal';
 import Counter from './modules/Counter';
 import Todos from './modules/Todos';
 import Navigation from './modules/Navigation';
+import MainView from './MainView';
+import TodosView from './components/TodosPanel';
+import CounterView from './components/CounterPanel';
 
 const counter = new Counter();
 const todos = new Todos();
@@ -17,6 +20,19 @@ const portal = Portal.create({
     todos,
     navigation,
   },
+  main: MainView,
+  components: {
+    Home: {
+      screen: TodosView,
+      path: '',
+      module: todos,
+    },
+    Counter: {
+      screen: CounterView,
+      path: 'Counter',
+      module: counter,
+    },
+  }
 });
 
 ReactDOM.render(
