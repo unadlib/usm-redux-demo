@@ -2,7 +2,7 @@ import Module from '../../lib/baseModule';
 import { connectModule } from '../../lib/moduleContext';
 
 export default class Portal extends Module {
-  generateApp(config = {}) {
+  createApp(config = {}) {
     const { main, components } = this._arguments;
     Object.entries(components).forEach(([name, component]) => {
       component.screen = connectModule(portal => {

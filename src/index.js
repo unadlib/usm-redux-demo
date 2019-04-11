@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Portal from './modules/Portal';
 import Counter from './modules/Counter';
@@ -10,6 +9,7 @@ import Navigation from './modules/Navigation';
 import MainView from './MainView';
 import TodosView from './components/TodosPanel';
 import CounterView from './components/CounterPanel';
+import { ModuleProvider } from './lib/moduleContext';
 
 const counter = new Counter();
 const todos = new Todos();
@@ -34,10 +34,13 @@ const portal = Portal.create({
     },
   }
 });
+const App = portal.createApp();
 
 ReactDOM.render(
   <Provider store={portal.store}>
-    <App module={portal} />
+    <ModuleProvider module={portal}>
+      <App />
+    </ModuleProvider>
   </Provider>,
   document.getElementById('root')
 );
