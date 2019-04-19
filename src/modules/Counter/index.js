@@ -11,13 +11,8 @@ export default class Counter extends ViewModule {
   getViewProps() {
     return {
       count: this.count,
-    };
-  }
-
-  getViewFunctions() {
-    return {
       increase: () => this.calculate(1),
       decrease: () => this.calculate(-1),
-    }
+    };
   }
 }

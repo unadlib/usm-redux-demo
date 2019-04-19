@@ -21,8 +21,7 @@ ModuleProvider.defaultProps = {
 const connectModule = (moduleSelector) => {
   return Component => {
     const WithModule = connect(
-      (_, props) => moduleSelector(props.module).getViewProps(props),
-      (_, props) => moduleSelector(props.module).getViewFunctions(props),
+      (_, parentProps) => moduleSelector(parentProps.module).getViewProps(parentProps),
     )(Component);
     return props => (
       <ModuleContext.Consumer>

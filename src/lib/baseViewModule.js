@@ -9,10 +9,6 @@ class ViewModule extends Module {
   getViewProps() {
     throw new Error(produceErrorMessage.call(this, 'getViewProps'));
   }
-
-  getViewFunctions() {
-    throw new Error(produceErrorMessage.call(this, 'getViewFunctions'));
-  }
 }
 
 export {
