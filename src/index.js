@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import * as serviceWorker from './serviceWorker';
 import Portal from './modules/Portal';
 import Counter from './modules/Counter';
@@ -38,9 +39,11 @@ const App = portal.createApp();
 
 ReactDOM.render(
   <Provider store={portal.store}>
-    <ModuleProvider module={portal}>
-      <App />
-    </ModuleProvider>
+    <PersistGate loading={null} persistor={portal.persistor}>
+      <ModuleProvider module={portal}>
+        <App />
+      </ModuleProvider>
+    </PersistGate>
   </Provider>,
   document.getElementById('root')
 );
