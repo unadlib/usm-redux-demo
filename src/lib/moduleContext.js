@@ -18,10 +18,24 @@ ModuleProvider.defaultProps = {
   children: null,
 };
 
+const pick = (props, isFunction) => {
+  const _props = {};
+  for(const key in props) {
+    if (
+      (typeof props[key] === 'function' && isFunction) ||
+      (typeof props[key] !== 'function' && !isFunction)
+    ) {
+      _props[key] = props[key];
+    }
+  }
+  return _props;
+}
+
 const connectModule = (moduleSelector) => {
   return Component => {
     const WithModule = connect(
-      (_, parentProps) => moduleSelector(parentProps.module).getViewProps(parentProps),
+      (_, parentProps) => pick(moduleSelector(parentProps.module).getViewProps(parentProps), false),
+      (_, parentProps) => pick(moduleSelector(parentProps.module).getViewProps(parentProps), true),
     )(Component);
     return props => (
       <ModuleContext.Consumer>
