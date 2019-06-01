@@ -13,7 +13,11 @@ import CounterView from './components/CounterPanel';
 import { ModuleProvider } from './lib/moduleContext';
 
 const counter = new Counter();
-const todos = new Todos();
+const todos = new Todos({
+  modules: {
+    counter,
+  }
+});
 const navigation = new Navigation();
 const portal = Portal.create({
   modules: {
@@ -36,7 +40,7 @@ const portal = Portal.create({
   }
 });
 const App = portal.createApp();
-
+window.portal = portal;
 ReactDOM.render(
   <Provider store={portal.store}>
     <PersistGate loading={null} persistor={portal.persistor}>
