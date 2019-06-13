@@ -2,7 +2,7 @@ import React from 'react';
 
 export default ({ count, increase, decrease }) => 
   <div>
-    <button onClick={increase}>+</button> 
+    <button onClick={decrease}>-</button> 
     {count}
-    <button onClick={decrease}>+</button> 
+    <button onClick={increase}>+</button> 
   </div>

@@ -10,14 +10,12 @@ export default class Todos extends ViewModule {
   @state todos = [];
   @state visibilityFilter = FILTERS.All;
   filters = Object.values(FILTERS);
-  nextTodoId = 0;
 
   @action
   add(text, state) {
-    this.nextTodoId++
     state.todos.push({
       text,
-      id: this.nextTodoId,
+      id: `${Math.random()}`,
       completed: false,
     })
   }

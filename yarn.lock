@@ -9776,20 +9776,20 @@ use@^3.1.0:
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
 
-usm-redux@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/usm-redux/-/usm-redux-1.2.2.tgz#4d5b9fe78e5a42b464bd768662910f0492a82297"
-  integrity sha512-AFzkNidoQAEfeiiecWWuZGBqJxg+gVTFvYcmkhqxnXNogSGvYtYtNeZO9VbgWdRCDUtBjerL9Vvq2HsQhRDeAQ==
+usm-redux@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/usm-redux/-/usm-redux-1.2.3.tgz#044f4113b442be9f89a509a88da48233a5de7e9a"
+  integrity sha512-/owL4dAva9MgrSi7iXg+iqmuCAiaJ5NA7FQNnGS+sitLd+EulKpCnxHN9G1YRBT/sunl/5JKBEk7TOzm/reR0g==
   dependencies:
     immer "^3.1.1"
     redux "^4.0.1"
     reselect "^2.5.4"
-    usm "^1.2.2"
+    usm "^1.2.3"
 
-usm@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/usm/-/usm-1.2.2.tgz#08097e716e0251c00a32c9f75c08ed35d922d899"
-  integrity sha512-38RfUgGgDWUlrEJFlnPmdKxDMKiHQBZifK7hzajDGoepTJfEgz0f+bKmXaYpmaqEJT7c/RVsyY0aW5gTlF+WDQ==
+usm@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/usm/-/usm-1.2.3.tgz#04ab274e07a66578dc6295038a20f1b51244cd75"
+  integrity sha512-i9c5VAB9k2467miiWkd4YZoZX25WQl/9vwtc6ZqY8+SDXATnC1mH2KTc5+OtXfRDfD1dnVn69FNoH+rrGE50jQ==
 
 util-deprecate@^1.0.1, util-deprecate@~1.0.1:
   version "1.0.2"
