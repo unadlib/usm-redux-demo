@@ -1,4 +1,5 @@
 import ViewModule, { state, action, computed } from '../../lib/baseViewModule';
+import { autobind } from '../../lib/autobind';
 
 const FILTERS = {
   All: 'All',
@@ -11,6 +12,7 @@ export default class Todos extends ViewModule {
   @state visibilityFilter = FILTERS.All;
   filters = Object.values(FILTERS);
 
+  @autobind
   @action
   add(text, state) {
     state.todos.push({
@@ -20,12 +22,14 @@ export default class Todos extends ViewModule {
     })
   }
 
+  @autobind
   @action
   toggle(id, state) {
     const todo = state.todos.find(todo => todo.id === id)
     todo.completed = !todo.completed
   }
-
+  
+  @autobind
   @action
   setVisibility(filter, state) {
     state.visibilityFilter = filter
@@ -47,9 +51,9 @@ export default class Todos extends ViewModule {
       list: this.list,
       filters: this.filters,
       visibilityFilter: this.visibilityFilter,
-      setVisibility: filter => this.setVisibility(filter),
-      toggleTodo: id => this.toggle(id),
-      addTodo: text => this.add(text),
+      setVisibility: this.setVisibility,
+      toggleTodo: this.toggle1,
+      addTodo: this.add,
     };
   }
 }
