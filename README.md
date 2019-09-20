@@ -1,5 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Introduce
+
+1. Import `usm-redux`
+2. Centralized configuration
+3. UI module injection
+
 ## Available Scripts
 
 In the project directory, you can run:
