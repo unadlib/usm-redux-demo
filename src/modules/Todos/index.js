@@ -52,7 +52,7 @@ export default class Todos extends ViewModule {
       filters: this.filters,
       visibilityFilter: this.visibilityFilter,
       setVisibility: this.setVisibility,
-      toggleTodo: this.toggle1,
+      toggleTodo: this.toggle,
       addTodo: this.add,
     };
   }
