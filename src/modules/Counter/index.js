@@ -1,11 +1,13 @@
 import ViewModule, { state, action } from '../../lib/baseViewModule';
 
 export default class Counter extends ViewModule {
+  name = 'counter';
+
   @state count = 0;
 
   @action
-  calculate(num, state) {
-    state.count += num;
+  calculate(num) {
+    this.count += num;
   }
 
   getViewProps() {

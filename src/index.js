@@ -1,45 +1,40 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
-import * as serviceWorker from './serviceWorker';
-import Portal from './modules/Portal';
-import Counter from './modules/Counter';
-import Todos from './modules/Todos';
-import Navigation from './modules/Navigation';
-import MainView from './MainView';
-import TodosView from './components/TodosPanel';
-import CounterView from './components/CounterPanel';
-import { ModuleProvider } from './lib/moduleContext';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import * as serviceWorker from "./serviceWorker";
+import Portal from "./modules/Portal";
+import Counter from "./modules/Counter";
+import Todos from "./modules/Todos";
+import Navigation from "./modules/Navigation";
+import MainView from "./MainView";
+import TodosView from "./components/TodosPanel";
+import CounterView from "./components/CounterPanel";
+import { ModuleProvider } from "./lib/moduleContext";
 
 const counter = new Counter();
-const todos = new Todos({
-  modules: {
-    counter,
-  }
-});
+const todos = new Todos();
 const navigation = new Navigation();
-const portal = Portal.create({
-  modules: {
-    counter,
-    todos,
-    navigation,
-  },
+const options = {
   main: MainView,
   components: {
     Home: {
       screen: TodosView,
-      path: '',
+      path: "",
       module: todos,
     },
     Counter: {
       screen: CounterView,
-      path: 'Counter',
+      path: "Counter",
       module: counter,
     },
-  }
+  },
+};
+const portal = new Portal(navigation, counter, todos, options);
+const App = portal.createApp({
+  modules: [navigation, counter, todos],
 });
-const App = portal.createApp();
+
 window.portal = portal;
 ReactDOM.render(
   <Provider store={portal.store}>
@@ -49,7 +44,7 @@ ReactDOM.render(
       </ModuleProvider>
     </PersistGate>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

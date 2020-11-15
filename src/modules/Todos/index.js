@@ -1,50 +1,51 @@
-import ViewModule, { state, action, computed } from '../../lib/baseViewModule';
-import { autobind } from '../../lib/autobind';
+import ViewModule, { state, action, computed } from "../../lib/baseViewModule";
+import { autobind } from "../../lib/autobind";
 
 const FILTERS = {
-  All: 'All',
-  Active: 'Active',
-  Completed: 'Completed'
+  All: "All",
+  Active: "Active",
+  Completed: "Completed",
 };
 
 export default class Todos extends ViewModule {
+  name = 'Todos';
+
   @state todos = [];
   @state visibilityFilter = FILTERS.All;
   filters = Object.values(FILTERS);
 
   @autobind
   @action
-  add(text, state) {
-    state.todos.push({
+  add(text) {
+    this.todos.push({
       text,
       id: `${Math.random()}`,
       completed: false,
-    })
+    });
   }
 
   @autobind
   @action
-  toggle(id, state) {
-    const todo = state.todos.find(todo => todo.id === id)
-    todo.completed = !todo.completed
-  }
-  
-  @autobind
-  @action
-  setVisibility(filter, state) {
-    state.visibilityFilter = filter
+  toggle(id) {
+    const todo = this.todos.find((todo) => todo.id === id);
+    todo.completed = !todo.completed;
   }
 
-  @computed
-  list = [
-    () => this.todos,
-    () => this.visibilityFilter,
-    (todos, visibilityFilter) => todos.filter(({ completed }) => 
-      visibilityFilter === FILTERS.All ||
-      ( visibilityFilter === FILTERS.Active && !completed) ||
-      ( visibilityFilter === FILTERS.Completed && completed)
-    )
-  ]
+  @autobind
+  @action
+  setVisibility(filter) {
+    this.visibilityFilter = filter;
+  }
+
+  @computed(({ todos, visibilityFilter }) => [todos, visibilityFilter])
+  get list() {
+    return this.todos.filter(
+      ({ completed }) =>
+        this.visibilityFilter === FILTERS.All ||
+        (this.visibilityFilter === FILTERS.Active && !completed) ||
+        (this.visibilityFilter === FILTERS.Completed && completed)
+    );
+  }
 
   getViewProps() {
     return {

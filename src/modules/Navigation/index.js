@@ -1,10 +1,8 @@
-import { createBrowserApp } from '@react-navigation/web';
+import { createBrowserApp } from "@react-navigation/web";
 import { createNavigator, SwitchRouter } from "@react-navigation/core";
-import Module from '../../lib/baseModule';
 
-export default class Navigation extends Module {
-  constructor(...args) {
-    super(...args);
+export default class Navigation {
+  constructor() {
     this._createApp = createBrowserApp;
     this._createNavigator = createNavigator;
     this._createRouter = SwitchRouter;
