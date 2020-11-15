@@ -31,9 +31,7 @@ const options = {
   },
 };
 const portal = new Portal(navigation, counter, todos, options);
-const App = portal.createApp({
-  modules: [navigation, counter, todos],
-});
+const App = portal.createApp();
 
 window.portal = portal;
 ReactDOM.render(
